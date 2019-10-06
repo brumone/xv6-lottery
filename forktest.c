@@ -8,7 +8,7 @@
 #define N  1000
 
 void
-printf(int fd, const char *s, ...)
+printf(int fd, char *s, ...)
 {
   write(fd, s, strlen(s));
 }
@@ -21,7 +21,7 @@ forktest(void)
   printf(1, "fork test\n");
 
   for(n=0; n<N; n++){
-    pid = fork();
+    pid = fork(0);
     if(pid < 0)
       break;
     if(pid == 0)
